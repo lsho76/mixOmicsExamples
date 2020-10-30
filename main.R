@@ -1,7 +1,7 @@
 library(mixOmics)
 library(parallelMap)
 
-Y <- as.factor(binary_class) # binary class of outcome variable
+Y <- as.factor(binary_class) # binary outcome
 X <- list(CT = CT, PET = PET) # CT and PET radiomics feature blocks
 list.keepX <- list(CT = c(seq(1, 4, 1)), PET = c(seq(1, 4, 1))) 
 
