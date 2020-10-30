@@ -1,21 +1,5 @@
-library(doSNOW)
-library(ggplot2)
-library(snow)
-library(githubinstall)
-library(caret)
-library(pROC)
-library(devtools)
-library(plotROC)
-library(xlsx)
-library(tibble)
 library(mixOmics)
-
-Y<-as.factor(pretx_class)
-preCT<-cbind(pre_shape, preCT_radiomics_texture$firstorder_original, preCT_radiomics_texture$secondorder_original, preCT_radiomics_texture$higherorder_original, preCT_radiomics_texture$global_original)
-prePET<-cbind(prePET_radiomics_texture$firstorder_original, prePET_radiomics_texture$secondorder_original, prePET_radiomics_texture$higherorder_original, prePET_radiomics_texture$global_original)
-CT <- preCT
-PET <- prePET
-binary_class <- Y
+library(parallelMap)
 
 Y <- as.factor(binary_class)
 X <- list(CT = CT, PET = PET)
@@ -28,7 +12,6 @@ diag(design) =  0
 design[1,s]=w
 design[s,1]=w
 
-library(parallelMap)
 parallelStartMulticore(cpus=10, mc.set.seed=TRUE)
 
 set.seed(1, "L'Ecuyer")
