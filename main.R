@@ -3,7 +3,7 @@ library(parallelMap)
 
 Y <- as.factor(binary_class) # binary outcome
 X <- list(CT = CT, PET = PET) # CT and PET radiomics feature blocks
-list.keepX <- list(CT = c(seq(1, 4, 1)), PET = c(seq(1, 4, 1))) 
+list.keepX <- list(CT = c(seq(1, 4, 1)), PET = c(seq(1, 4, 1))) #  set up arbitrarily the number of variables keepX for each block
 
 s = 3 # size of design matrix
 w = 1 # correlation between data matrices
