@@ -9,8 +9,8 @@ s = 3
 w = 1
 design = matrix(1, ncol = s, nrow = s)
 diag(design) =  0
-design[1,s]=w
-design[s,1]=w
+design[1,s] = w
+design[s,1] = w
 
 parallelStartMulticore(cpus=10, mc.set.seed=TRUE)
 
@@ -26,7 +26,7 @@ choice.ncomp <- tune.block.splsda$choice.ncomp$ncomp
 choice.keepX <- list(CT=tune.block.splsda$choice.keepX$CT[1:choice.ncomp], PET=tune.block.splsda$choice.keepX$PET[1:choice.ncomp])
 
 MyResult.diablo <- block.splsda(X, Y, ncomp = choice.ncomp, keepX=choice.keepX)
-selectedVariables<-selectVar(MyResult.diablo, comp = choice.ncomp)
+selectedVariables <- selectVar(MyResult.diablo, comp = choice.ncomp)
 
 set.seed(1, "L'Ecuyer")
 perf.block.splsda <- perf(MyResult.diablo, validation = "Mfold", folds = 5, progressBar = TRUE, auc = TRUE, nrepeat = 20, dist="max.dist") 
