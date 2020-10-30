@@ -1,9 +1,9 @@
 library(mixOmics)
 library(parallelMap)
 
-Y <- as.factor(binary_class) # outcome bionary class
+Y <- as.factor(binary_class) # binary class of outcome variable
 X <- list(CT = CT, PET = PET) # CT and PET radiomics feature blocks
-list.keepX <- list(CT = c(seq(1, 4, 1)), PET = c(seq(1, 4, 1))) # 
+list.keepX <- list(CT = c(seq(1, 4, 1)), PET = c(seq(1, 4, 1))) 
 
 s = 3 # size of design matrix
 w = 1 # correlation between data matrices
