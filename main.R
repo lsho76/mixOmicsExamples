@@ -18,7 +18,7 @@ parallelStartMulticore(cpus = 10, mc.set.seed = TRUE) # multicore processing usi
 set.seed(1, "L'Ecuyer")
 
 # Tune DIABLO with 20 repeated 5-fold cross-validation
-tune.block.splsda <- mixOmics::tune.block.splsda(X, Y, ncomp = ncomp, validation = 'Mfold', folds = 5, design=design, near.zero.var = TRUE, light.output = FALSE, dist="max.dist",
+tune.block.splsda <- mixOmics::tune.block.splsda(X, Y, ncomp = ncomp, validation = 'Mfold', folds = 5, design=design, near.zero.var = TRUE, light.output = FALSE, dist = "max.dist",
                                                  test.keepX = list.keepX, nrepeat = 20, cpus=10)
 parallelStop()
 
