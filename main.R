@@ -14,7 +14,7 @@ design[s,1] = w
 
 ncomp = 4 # Set the number of PLS components.
 library(parallelMap)
-parallelStartMulticore(cpus=10, mc.set.seed=TRUE) # multicore processing using 10 cores
+parallelStartMulticore(cpus = 10, mc.set.seed = TRUE) # multicore processing using 10 cores
 set.seed(1, "L'Ecuyer")
 
 # Tune DIABLO with 20 repeated 5-fold cross-validation
