@@ -1,19 +1,18 @@
 library(mixOmics)
 library(parallelMap)
 
-Y <- as.factor(binary_class)
-X <- list(CT = CT, PET = PET)
-list.keepX <- list(CT = c(seq(1, 4, 1)), PET = c(seq(1, 4, 1)))
+Y <- as.factor(binary_class) # outcome bionary class
+X <- list(CT = CT, PET = PET) # CT and PET radiomics feature blocks
+list.keepX <- list(CT = c(seq(1, 4, 1)), PET = c(seq(1, 4, 1))) # 
 
-s = 3
-w = 1
+s = 3 # size of design matrix
+w = 1 # correlation between data matrices
 design = matrix(1, ncol = s, nrow = s)
 diag(design) =  0
 design[1,s] = w
 design[s,1] = w
 
 parallelStartMulticore(cpus=10, mc.set.seed=TRUE)
-
 set.seed(1, "L'Ecuyer")
 tune.block.splsda <- mixOmics::tune.block.splsda(X, Y, ncomp = 4, validation = 'Mfold', folds = 5, design=design, near.zero.var = TRUE, light.output = FALSE, dist="max.dist",
                                                  test.keepX = list.keepX, nrepeat = 20, cpus=10)
