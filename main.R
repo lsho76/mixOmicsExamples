@@ -5,7 +5,7 @@ Y <- as.factor(binary_class) # binary outcome
 X <- list(CT = CT, PET = PET) # CT and PET radiomics feature blocks
 list.keepX <- list(CT = c(seq(1, 4, 1)), PET = c(seq(1, 4, 1))) #  Set up arbitrarily the number of variables keepX for each block.
 
-s = 3 # size of design matrix (number of data blocks + 1)
+s = 3 # size of design matrix (number of feature blocks + 1)
 w = 1 # correlation between data matrices
 design = matrix(1, ncol = s, nrow = s)
 diag(design) =  0
