@@ -1,10 +1,8 @@
 library(mixOmics)
 library(parallelMap)
 
-# Load a dataset, and assign features to X, a dependent variable to Y.
-
-Y <- as.factor(binary_class) # binary outcome
-X <- list(CT = CT, PET = PET) # CT and PET radiomics feature blocks
+Y <- as.factor(binary_class) # Assign a dependent variable to Y
+X <- list(CT = CT, PET = PET) # Assign feature blocks to X
 list.keepX <- list(CT = c(seq(1, 4, 1)), PET = c(seq(1, 4, 1))) # Set up arbitrarily the number of variables keepX for each block.
 
 s = 3 # Set size of design matrix (number of feature blocks + 1)
