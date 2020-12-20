@@ -10,8 +10,8 @@ library(parallelMap)
 parallelStartMulticore(cpus = 10, mc.set.seed = TRUE) # multicore processing using 10 cores
 set.seed(1, "L'Ecuyer")
 
-# Tune DIABLO with 20 repeated 5-fold cross-validation
-tune.splsda <- mixOmics::tune.splsda(X1, Y, ncomp = ncomp, validation = 'Mfold', folds = 5, near.zero.var = TRUE, dist="max.dist", 
+# Tune sPLS-DA with 20 repeated 5-fold cross-validation
+tune.splsda <- mixOmics::tune.splsda(X, Y, ncomp = ncomp, validation = 'Mfold', folds = 5, near.zero.var = TRUE, dist="max.dist", 
                                                  test.keepX = list.keepX, nrepeat = 20, cpus=10, auc=TRUE)
 parallelStop()
 
@@ -21,7 +21,7 @@ tune.splsda$choice.ncomp$ncomp # Selected number of components
 choice.ncomp <- tune.splsda$choice.ncomp$ncomp
 choice.keepX <- tune.splsda$choice.keepX
 
-MyResult.splsda <- splsda(X1, Y, ncomp = choice.ncomp, keepX=choice.keepX) # Train sPLS-DA with selected features for each component.
+MyResult.splsda <- splsda(X, Y, ncomp = choice.ncomp, keepX=choice.keepX) # Train sPLS-DA with selected features for each component.
 selectedVariables <- selectVar(MyResult.splsda, comp = choice.ncomp) # Selected features for the last selected component.
 
 set.seed(1, "L'Ecuyer")
