@@ -30,3 +30,4 @@ perf.block.splsda$auc # Cross-validated AUC with 20 repeated 5-fold cross-valida
 
 perf.plsda <- perf(MyResult.splsda, validation = "Mfold", folds = 5, progressBar = TRUE, auc = TRUE, nrepeat = 20, dist = "max.dist") 
 perf.plsda$auc
+
