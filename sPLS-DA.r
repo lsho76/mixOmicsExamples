@@ -25,9 +25,6 @@ MyResult.splsda <- splsda(X, Y, ncomp = choice.ncomp, keepX=choice.keepX) # Trai
 selectedVariables <- selectVar(MyResult.splsda, comp = choice.ncomp) # Selected features for the last selected component.
 
 set.seed(1, "L'Ecuyer")
-perf.block.splsda <- perf(MyResult.diablo, validation = "Mfold", folds = 5, progressBar = TRUE, auc = TRUE, nrepeat = 20, dist = "max.dist") 
-perf.block.splsda$auc # Cross-validated AUC with 20 repeated 5-fold cross-validation
-
 perf.plsda <- perf(MyResult.splsda, validation = "Mfold", folds = 5, progressBar = TRUE, auc = TRUE, nrepeat = 20, dist = "max.dist") 
 perf.plsda$auc
 
