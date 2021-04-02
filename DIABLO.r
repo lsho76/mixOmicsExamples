@@ -9,13 +9,7 @@ s = 3 # Set size of design matrix (number of feature blocks + 1)
 w = 1 # Set connection between different datasets (between 0 and 1)
 design = matrix(1, ncol = s, nrow = s)
 diag(design) =  0
-for(i in 1:s)
-{
-    for(j in 1:s)
-    {
-        if(i!=j & i!=s & j!=s) design[i,j]=w
-    }
-}
+for(i in 1:s) for(j in 1:s) if(i!=j & i!=s & j!=s) design[i,j]=w
 
 ncomp = 4 # Set the number of PLS components.
 library(parallelMap)
